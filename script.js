@@ -11,27 +11,29 @@ loginBtn.addEventListener("click", function () {
 // deposit button event handler
 const depositBtn = document.getElementById("addDeposit");
 depositBtn.addEventListener("click", function(){
-    // getting the value
-    const depositAmount = document.getElementById("depositAmount").value;
-    // converting string to float
-    const depositNumber = parseFloat(depositAmount);
+    const depositNumber = getInputNumber("depositAmount");
 
-    // // dashboard deposit
-    // const currentDeposit = document.getElementById("currentDeposit").innerText;
-    // const currentDepositNumber = parseFloat(currentDeposit);
-    // const totalDeposit = depositNumber + currentDepositNumber;
-    // console.log(totalDeposit);
-    // // setting current deposit
-    // document.getElementById("currentDeposit").innerText = totalDeposit;
     updateSpanText("currentDeposit", depositNumber);
     updateSpanText("currentBalance", depositNumber);
-
     // empty string
     document.getElementById("depositAmount").value = "";
 })
 
+// withdraw button event handler
+const withdrawBtn = document.getElementById("addWithdraw");
+withdrawBtn.addEventListener("click", function(){
+    const withdrawNumber = getInputNumber("withdrawAmount");
+    console.log(withdrawNumber);
+})
+
+function getInputNumber(id){
+    const amount = document.getElementById(id).value;
+    const amountNumber = parseFloat(amount);
+    return amountNumber;
+}
+
 function updateSpanText(id, depositNumber){
-    // dashboard balance
+    // dashboard
     const current = document.getElementById(id).innerText;
     const currentNumber = parseFloat(current);
     const totalAmount = depositNumber + currentNumber;
