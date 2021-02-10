@@ -13,10 +13,18 @@ const depositBtn = document.getElementById("addDeposit");
 depositBtn.addEventListener("click", function(){
     const depositNumber = getInputNumber("depositAmount");
 
-    updateSpanText("currentDeposit", depositNumber);
-    updateSpanText("currentBalance", depositNumber);
-    // empty string
-    document.getElementById("depositAmount").value = "";
+    if(depositNumber < 0){
+        alert('Deposit number cannot be negative.');
+        // empty string
+        document.getElementById("depositAmount").value = "";
+    }
+    else{
+        updateSpanText("currentDeposit", depositNumber);
+        updateSpanText("currentBalance", depositNumber);
+        // empty string
+        document.getElementById("depositAmount").value = "";
+    }
+
 })
 
 // withdraw button event handler
